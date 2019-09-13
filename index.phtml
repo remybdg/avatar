@@ -1,0 +1,72 @@
+<html>
+<body>
+
+    <h1>Avatar</h1>
+
+    <form action="avatar.php" method="POST">
+        <label for="cases">Nombre de cases</label>
+        <select name="cases" id="cases" name="cases">
+            <option value="5" selected>5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+        </select></br></br>
+        <input type="checkbox" name="randomColors" value="true" checked>couleurs aléatoires
+
+        <input type="number" id="numberRandomColor" name="numberRandomColor"
+        min="1" max="20" value="2">
+        <br>
+        <p>ou</p>
+        <input type="checkbox" name="color[]" value="Black">Noire
+        <br>
+        <input type="checkbox" name="color[]" value="White">Blanc
+        <br>
+        <input type="checkbox" name="color[]" value="DarkCyan">Bleu
+        <br>
+        <input type="checkbox" name="color[]" value="DarkSlateBlue">Violet
+        <br>
+        <input type="checkbox" name="color[]" value="DimGray">Gris
+        <br>
+        <input type="checkbox" name="color[]" value="OrangeRed">Orange
+        <br>
+        <input type="checkbox" name="color[]" value="YellowGreen">Vert
+        <br>
+        <input type="checkbox" name="color[]" value="Gold">Jaune
+        <br>
+        <input type="checkbox" name="color[]" value="Red">Rouge
+        <br>
+        <input type="checkbox" name="color[]" value="SeaGreen">Vert Foncé
+        <br>
+        <input type="checkbox" name="color[]" value="HotPink">Rose
+        <br></br>
+        <input type="submit" value="générer mon avatar !">
+    </form></br>
+    
+    <?= $svg; ?>
+
+    <button onclick="saveCustomAvatar()">Save custom avatar !</button>
+<script type="text/javascript">
+    var currentIndex = 0;
+    var colorsSelected = ["black", "white", "darkcyan", "darkslateblue", "dimgray", "orangered", "yellowgreen", "gold", "red", "seagreen", "hotpink"];
+
+    window.onclick = function(event) {
+
+        if (event.target.matches('rect')) {
+            currentIndex++;
+            if (currentIndex >= colorsSelected.length) {
+                currentIndex = 0;
+            }
+            console.log(colorsSelected, currentIndex);
+            event.target.style.fill = colorsSelected[currentIndex];
+        }
+    }
+
+    function saveCustomAvatar() {
+        var svg = document.querySelector("svg");
+        console.log(svg);
+    }
+</script>
+
+</body>
+</html> 
